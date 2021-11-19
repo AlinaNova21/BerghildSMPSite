@@ -1,0 +1,51 @@
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ if .IsNode }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ else }}{{ with .Description }}{{ . | truncate 100 }}{{ end }}{{ end }}">
+  <meta name="og:title" content="{{ .Title }}">
+  <meta name="section" content="{{ .Section }}">
+  <meta name="currentSection" content="{{ .CurrentSection }}">
+  {{ with .GitInfo }}
+  <meta name="git_info:hash" content="{{ .Hash }}">
+  <meta name="git_info:author_name" content="{{ .AuthorName }}">
+  {{ end }}
+  {{ if eq .Section "posts" }}
+  <meta name="og:type" content="article">
+  {{ if .PublishDate }}<meta name="article:published_time" content="{{ .PublishDate }}">{{ end }}
+  {{ if .ExpiryDate }}<meta name="article:expiration_time" content="{{ .ExpiryDate }}">{{ end }}
+  {{ if .Lastmod }}<meta name="article:modified_time" content="{{ .Lastmod }}">{{ end }}
+  {{ if .Params.Tags }}<meta name="article:tags" content="{{ .Params.Tags }}">{{ end }}
+  {{ else }}
+  <meta name="og:type" content="website">
+  {{ end }}
+  <meta name="og:url" content="{{ .Permalink }}">
+  <meta name="og:site_name" content="{{ .Site.Title }}">
+  <meta name="og:description" content="{{ if .Description }}{{ .Description }}{{ else if .Summary }}{{ .Summary }}{{ else }}{{ .Plain | truncate 100 }}{{ end }}">
+  {{.Hugo.Generator}}
+
+  <title>{{ if .IsHome }}{{ .Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}</title>
+
+  <link rel="stylesheet" href="/css/screepsplus.css" defer>
+  <link rel="stylesheet" href="/css/font-awesome.min.css" defer>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" defer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-core.min.js"
+    integrity="sha256-Y+Budm2wBEjYjbH0qcJRmLuRBFpXd0VKxl6XhdS4hgA=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"
+    integrity="sha256-ht8ay6ZTPZfuixYB99I5oRpCLsCq7Do2LjEYLwbe+X8=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism.min.css"
+    integrity="sha256-77qGXu2p8NpfcBpTjw4jsMeQnz0vyh74f5do0cWjQ/Q=" crossorigin="anonymous" />
+
+  <!-- RSS -->
+  {{ if .RSSLink }}
+  <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ .RSSLink }}" />
+  {{ end }}
+
+  {{ range .Site.Params.custom_css }}
+    <link rel="stylesheet" href="{{ $.Site.BaseURL }}{{ . }}">
+  {{ end }}
+  {{ range .Site.Params.custom_js }}
+    <script src="{{ $.Site.BaseURL }}{{ . }}"></script>
+  {{ end }}
+
+</head>

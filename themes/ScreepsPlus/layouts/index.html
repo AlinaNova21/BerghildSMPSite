@@ -1,0 +1,16 @@
+{{ partial "header.html" . }}
+
+<div class="content">
+	<header>
+	  <h1>{{ .Title }}</h1>
+	  <h2>{{ .Site.Params.subtitle }}</h2>
+	</header>
+
+	<content>
+	  {{ range ( where .Data.Pages "Type" "posts") }}
+	    {{ .Render "summary"}}
+	  {{ end }}
+	</content>
+</div>
+
+{{ partial "footer.html" . }}

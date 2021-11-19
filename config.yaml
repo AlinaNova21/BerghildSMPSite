@@ -1,0 +1,16 @@
+baseURL: http://example.org/
+languageCode: en-us
+title: My New Hugo Site
+theme: ScreepsPlus
+
+canonifyurls: false
+paginate: 10
+enableEmoji: true
+enableGitInfo: true
+
+menu:
+  main:
+  - name: "Characters"
+    pre: "<i class='fa fa-chevron-right fa-fw'></i>"
+    itentifier: "Characters"
+    weight: 10

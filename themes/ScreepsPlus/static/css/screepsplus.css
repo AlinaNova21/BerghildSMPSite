@@ -1,0 +1,145 @@
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	font-family: Roboto;
+	font-size: 12pt;
+	color: hsl(0,0%,10%);
+	margin: 0;
+	padding: 0;
+}
+
+@media(min-width: 768px) {
+	html, body {
+		height: 100vh;
+	}
+
+}
+
+.brand img {
+	height: 64px;
+}
+
+#layout {
+	display:  grid;
+	grid-template-areas: "brand content"
+						 "menu content"
+						 "social content";
+	grid-template-rows: 72px auto 256px;
+	grid-template-columns: 210px auto;
+	height: 100%;
+	background-color: hsl(0,0%,10%);
+}
+
+@media(max-width: 768px){
+	#layout {
+		grid-template-areas: 
+			"brand" 
+			"menu" 
+			"content" 
+			"social";
+		grid-template-rows: 72px auto auto auto;
+		grid-template-columns: auto;
+	}
+	.content {
+		overflow: inherit;
+	}
+	.menu-item {
+		text-align: center;
+	}
+}
+
+header {
+	grid-area: header;
+}
+
+.brand {
+	grid-area: brand;
+	color: hsl(0,0%,80%);
+	text-align: center;
+	padding: 0 8px;
+}
+
+#menu {
+	grid-area: menu;
+	color: hsl(0,0%,80%);
+}
+.social {
+	grid-area: social;
+	color: hsl(0,0%,80%);
+	display: flex;
+	align-items: flex-end;
+}
+.social ul {
+	flex: 1;
+}
+
+footer {
+	grid-area: footer;
+	background-color: yellow;
+}
+
+.content {
+	grid-area: content;
+	background-color: hsl(0,0%,90%);
+	padding: 16px;
+	overflow: auto;
+}
+
+.brand {
+	font-size: 24pt;
+}
+
+.brand a, 
+#menu a,
+.social a {
+	text-decoration: none;
+	color: hsl(0,0%,80%);
+	display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding: 8px 0;
+}
+
+/* .brand a:hover, 
+#menu a:hover {
+	color: hsl(0,0%,95%);
+
+}
+ */
+.menu-list, .menu-children {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.menu-item {
+	font-size: 12pt;
+}
+
+.menu-item:not(.menu-has-children):hover {
+	background-color: hsl(0,0%,30%);
+}
+
+.menu-item .fa {
+	margin-right: 4px;
+	margin-left: 8px;
+}
+
+.menu-children .menu-item .fa {
+	margin-left: 32px;
+}
+
+
+article {
+	padding: 16px;
+	/* border: 1px solid hsl(0,0%,80%); */
+}
+
+article header a {
+	text-decoration: none;
+	color: hsl(0, 0%, 20%);
+	font-size: 24pt;
+	font-weight: bold;
+}

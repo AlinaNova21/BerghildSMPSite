@@ -1,0 +1,21 @@
+<div id="menu">
+  <ul class="menu-list">
+    {{ range .Site.Menus.main }}
+    {{ if .HasChildren }}
+      <li class="menu-item menu-has-children">
+        <span>{{ .Pre }}{{ .Name }}</span>
+        <ul class="menu-children">
+          {{ range .Children }}
+          <li class="menu-item">
+            <a href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a>
+          </li>
+          {{ end }}
+        </ul>
+    {{else}}
+      <li class="menu-item">
+        <a href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a>
+    {{end}}
+      </li>
+    {{end}}
+  </ul>
+</div>

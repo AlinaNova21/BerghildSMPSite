@@ -1,0 +1,19 @@
+<article>
+  <header>
+    <a href="{{ .Permalink }}">{{ .Title }}</a>
+  </header>
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>{{ with .Site.Params.dateFormat }}{{ $.Date.Format . }}{{ else }}{{ .Date.Format "02 Jan 2006, 15:04" }}{{ end }}</time>
+  </div>
+  <p>
+    {{ .Summary }}
+  </p>
+
+  {{ if .Truncated }}
+  <footer>
+    <a href="{{ .RelPermalink }}">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  {{ end }}
+</article>
